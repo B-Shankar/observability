@@ -1,0 +1,9 @@
+[submodule "order-service"]
+	path = order-service
+	url = https://github.com/B-Shankar/order-service-observability.git
+[submodule "product-service"]
+	path = product-service
+	url = https://github.com/B-Shankar/product-service-observability.git
+[submodule "user-service"]
+	path = user-service
+	url = https://github.com/B-Shankar/user-service-observability.git

@@ -1,0 +1,10 @@
+package com.observability.e_commerce.order_service.dto;
+
+import lombok.Data;
+
+@Data
+public class UserResponse {
+    private Long id;
+    private String name;
+    private String email;
+}

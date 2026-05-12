@@ -1,0 +1,57 @@
+groups:
+
+  - name: observability-alerts
+
+    rules:
+
+      - alert: HighOrderLatency
+
+        expr: orders_creation_time_seconds_max > 3
+
+        for: 30s
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "High order creation latency"
+          description: "Order creation latency exceeded 3 seconds"
+
+      - alert: HighOrderFailures
+
+        expr: increase(orders_errors_total[1m]) > 3
+
+        for: 30s
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "High order failures"
+          description: "Too many order failures in last minute"
+
+      - alert: ProductServiceDown
+
+        expr: up{job="product-service"} == 0
+
+        for: 15s
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "Product service down"
+          description: "product-service is unreachable"
+
+      - alert: DownstreamFailures
+
+        expr: increase(downstream_errors_total[1m]) > 2
+
+        for: 30s
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "Downstream service failures"
+          description: "Downstream dependency errors detected"
